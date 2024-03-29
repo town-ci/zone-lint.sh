@@ -50,4 +50,6 @@ then
   echo "OK"
 fi
 
+/bin/rm -f $TMPFILE $TMPFILE2
+
 exit
