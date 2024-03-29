@@ -45,6 +45,14 @@ do
   fi
 done < $TMPFILE2
 
+ZENKAKU=$(LANG=C grep -c -n -v '^[[:cntrl:][:print:]]*$' $1) 
+if [ $ZENKAKU -gt 0 ]; 
+then 
+  echo "以下の行に全角文字が含まれています"
+  LANG=C grep -n -v '^[[:cntrl:][:print:]]*$' $1
+  RETV=2
+fi 
+
 if [ $RETV -eq 0 ];
 then
   echo "OK"
